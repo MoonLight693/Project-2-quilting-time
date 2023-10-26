@@ -1,3 +1,24 @@
+'''
+Name:           Evan Whitmer
+Date:           October 25, 2023
+Class:          CSC-310-A Programming Languages
+Description:    To make a Python implementation of Sethi's Little Quilt Language. See the Power Point Presentation 
+                Lecture 14 (9/29) for more details. A quilt atom will be a single letter either “a” or “b”. Quilt atoms
+                represent squares which contain a pattern. They can be in one of 4 possible orientations. An oriented atom 
+                is a tuple of the form (“q”,i) where “q” is a quilt atom and i is an integer in the range 0,1,2,3. (“q”, i) 
+                represents “q” rotated clockwise through i clockwise 90 degree rotations. Note that (“a”,0) represents “a” 
+                itself. A quilt is a list of rows, all of which need to have the same length. A row is a list of oriented atoms. 
+                For example, [[(“a”,1), (”a”,0), (”b”,1)], [(“b”,2), (”a”,1), (”a”, 3)]] is a 2x3 quilt
+                You should bind variable a to quilt [[“a”,0]] and b to [[“b”,0]] so that a and b can be regarded as the names 
+                for building-block quilts.
+                Atoms should print as nxn block of characters such as
+                #@
+                ##
+                This will be represented as a Python string like "#@\n##". Such a block can be rotated
+                For example
+                #@ rotates to ##
+                ##                  #@
+'''
 
 #2d array as in a list of a list of tuples
 a = [[('a', 0)]]
