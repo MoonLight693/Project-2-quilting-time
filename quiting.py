@@ -114,6 +114,32 @@ def quilt_to_string(quitly, string1, string2):
         stringQuilty += '\n'
     return stringQuilty
 
+def quilt_to_string_no_newline(quitly, string1, string2):
+    '''returns a string representation of the quilt using the string representations of string1 for piece a and 
+    string2 for piece b. The printed quilt should embedded “\\n” separating the lines so that it prints correctly.'''
+    stringQuilty = ''
+    for row in quitly:
+        for atomly in row:                                  # if tuple is a
+            if atomly[0] == 'a':                            # replace with first half of string 1 
+                stringQuilty += (string1[atomly[1]])[:2]
+            else:                                           # if tuple is b
+                stringQuilty += (string2[atomly[1]])[:2]     # replace with first half of string 2
+                
+        stringQuilty += '\n'                                # separate the lines so prints the line 
+        
+        for atomly in row:                                  # if tuple is a
+            if atomly[0] == 'a':                            # replace with second half of string 1
+                stringQuilty += (string1[atomly[1]])[2:4]
+            else:                                           # if tuple is b
+                stringQuilty += (string2[atomly[1]])[2:4]    # replace with second half of string 2
+        #stringQuilty += '\n'
+    return stringQuilty
+
+#Extra section
+def mirror(quilty):
+    '''horizontal reflection of a quilt'''
+    return turn(turn(quilty))
+
 #Testing grounds
 
 print('Print a: ', a)
@@ -136,11 +162,11 @@ print('Repeat block a: ')
 for rows in repeat_block(a, 3, 3):
     print(rows)
     
-#1 └
-#2 ┓
-#3 ┎
-#4 ┙
-stringer1 = ['└┓┎┙','┎└┙┓','┙┎┓└','┓┙└┎']
+#1 ╭
+#2 ╮
+#3 ╯
+#4 ╰
+stringer1 = ['╭╮╯╰','╯╭╰╮','╰╯╮╭','╮╰╭╯']
             #1234  #3142   #4321  #2413
             #12     31      43     24  
             #34     42      21     13
@@ -155,10 +181,8 @@ stringer2 = ['┣┫┳┻','┳┣┻┫','┻┳┫┣','┫┻┣┳']
             #34     42      21     13
 
 print('Quilt experiment 1:')
-THEQuilt = sew(sew(b,b), turn(pile(b,b)))
-THEQuilt = sew(THEQuilt, sew(sew(a,a), turn(pile(a,a))))
-print(quilt_to_string(THEQuilt, stringer1, stringer2))
-THEQuilt = turn(turn(THEQuilt))
+uppy = turn(pile(a,a))
+THEQuilt = pile(sew(uppy, mirror(uppy)), sew(uppy, mirror(uppy)))
 print(quilt_to_string(THEQuilt, stringer1, stringer2))
 
 print('Quilt experiment 2:')
