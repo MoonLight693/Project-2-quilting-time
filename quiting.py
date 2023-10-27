@@ -18,6 +18,7 @@ Description:    To make a Python implementation of Sethi's Little Quilt Language
                 For example
                 #@ rotates to ##
                 ##                  #@
+Source(s):      images for atoms: https://cloford.com/resources/charcodes/utf-8_box-drawing.htm
 '''
 
 #2d array as in a list of a list of tuples
